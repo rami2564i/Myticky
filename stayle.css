@@ -1,0 +1,142 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #111;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    background: #1a1a1a;
+    font-size: 18px;
+}
+
+.icon {
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.welcome {
+    padding: 20px;
+}
+
+.welcome h2 {
+    margin-bottom: 10px;
+}
+
+.coming {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #222;
+    border-radius: 15px;
+    padding: 8px 15px;
+    border: 1px solid #555;
+    width: fit-content;
+}
+
+.coming img {
+    width: 60px;
+    height: 35px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.info {
+    width: 40%;
+}
+
+.events-section {
+    position: relative;
+    padding: 20px;
+}
+
+.events-container {
+    display: flex;
+    gap: 15px;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    padding: 10px 0;
+}
+
+.event-card {
+    display: flex;
+    flex-direction: column;
+    background: #222;
+    border-radius: 12px;
+    width: 230px;
+    height: 340px;
+    padding: 15px 10px;
+    text-align: left;
+    flex-shrink: 0;
+    transition: transform 0.3s, border 0.3s;
+    border: 2px solid transparent;
+    overflow-Y: hidden;
+}
+
+.event-card.selected {
+    border-color: #007bff;
+}
+
+.event-card:hover {
+    transform: scale(1.03);
+}
+
+.event-card img {
+    width: 120px;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.event-card .book {
+    margin-top: 30px;
+    margin-left: 60px;
+    background: transparent;
+    color: #fff;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: left;
+}
+
+.book:hover {
+    background-color: rgba(208, 20, 20, 0.842);
+    width: 120px;
+    height: 40px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.scroll-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #333;
+    color: white;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 50%;
+}
+
+.scroll-btn.left {
+    left: 5px;
+}
+
+.scroll-btn.right {
+    right: 5px;
+}
+
+.first {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}

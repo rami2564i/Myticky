@@ -104,6 +104,7 @@ header {
     font-weight: bold;
     cursor: pointer;
     text-align: left;
+    align-self: flex-start;
 }
 
 .book:hover {
@@ -139,4 +140,95 @@ header {
     display: flex;
     justify-content: space-between;
     gap: 15px;
+}
+
+#booking-section {
+    display: none;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    backdrop-filter: brightness(0.6);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#backBtn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.profile-icon {
+    font-size: 1.4rem;
+}
+
+.my-ticky {
+    background: none;
+    border: 1px solid white;
+    color: white;
+    padding: 10px 30px;
+    border-radius: 25px;
+    margin: 20px 0;
+    cursor: pointer;
+}
+
+.ticket-card {
+    background: rgba(30, 30, 30, 0.85);
+    border-radius: 20px;
+    padding: 20px;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.ticket-info {
+    margin: 15px 0;
+}
+
+.price-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 0;
+}
+
+.price {
+    background: #b33a2f;
+    padding: 6px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+}
+
+.counter button {
+    background: #b33a2f;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.counter span {
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+.buy-btn {
+    background: none;
+    border: 1px solid white;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
 }

@@ -169,17 +169,38 @@
             <label>Phone</label>
             <input type="tel" id="phone" required />
 
-            <button type="submit">Confirm</button>
+            <button type="submit" id="confirmBtn">Confirm</button>
         </form>
 
         <div id="participantsList"></div>
 
-        <button id="nextStepBtn" disabled>Next</button>
+        <button id="nextStepBtn" disabled>Next →</button>
     </section>
 
 
 
 
+    <!-- ============ STEP 4: BOOKING SUMMARY ============ -->
+    <section id="step4" style="display:none;">
+        <h2>Booking Summary</h2>
+
+        <div class="summary-card">
+            <img id="summary-img" alt="Event image" />
+            <div class="summary-info">
+                <h3 id="summary-title"></h3>
+                <p id="summary-location"></p>
+                <p id="summary-date"></p>
+                <p id="summary-qty"></p>
+                <p id="summary-total"></p>
+            </div>
+        </div>
+
+        <h3>Registered Participants</h3>
+        <div id="summary-participants"></div>
+
+        <!-- New confirm button -->
+        <button id="confirmBookingBtn" class="confirm-btn">✅ Confirm Booking</button>
+    </section>
 
 
 

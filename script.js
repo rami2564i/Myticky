@@ -164,60 +164,102 @@ buyBtn.addEventListener("click", () => {
     document.getElementById("step3").style.display = "block"; // Show Step 3
     document.getElementById("step3").classList.add("active");
 });
-// --- STEP 3: ADD PARTICIPANTS ---
-let participants = JSON.parse(localStorage.getItem("participants")) || [];
-const form = document.getElementById("participantForm");
-const list = document.getElementById("participantsList");
-const nextBtn = document.getElementById("nextStepBtn");
-const totalTickets = parseInt(localStorage.getItem("ticketsQty")) || 0;
+// ==================== STEP 3 → STEP 4 ====================
 
-// Restore existing participants
-updateList();
+// Step 3 elements
+const participantForm = document.getElementById("participantForm");
+const participantsList = document.getElementById("participantsList");
+const nextStepBtn = document.getElementById("nextStepBtn");
+const step3 = document.getElementById("step3");
+const step4 = document.getElementById("step4");
 
-form.addEventListener("submit", (e) => {
+// Step 4 elements
+const summaryTitle = document.getElementById("summary-title");
+const summaryLocation = document.getElementById("summary-location");
+const summaryDate = document.getElementById("summary-date");
+const summaryQty = document.getElementById("summary-qty");
+const summaryTotal = document.getElementById("summary-total");
+const summaryImg = document.getElementById("summary-img");
+const summaryParticipants = document.getElementById("summary-participants");
+const confirmBookingBtn = document.getElementById("confirmBookingBtn");
+
+let participants = [];
+
+// Handle participant form submission
+participantForm.addEventListener("submit", e => {
     e.preventDefault();
 
+    // Create participant object
     const participant = {
-        firstName: firstName.value.trim(),
-        lastName: lastName.value.trim(),
-        email: email.value.trim(),
-        phone: phone.value.trim(),
+        firstName: document.getElementById("firstName").value.trim(),
+        lastName: document.getElementById("lastName").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        phone: document.getElementById("phone").value.trim(),
     };
 
-    // Validation
+    // Basic validation
     if (!participant.firstName || !participant.lastName || !participant.email || !participant.phone) {
-        alert("Please fill all fields.");
+        alert("⚠️ Please fill in all participant fields.");
         return;
     }
 
+    // Add to list
     participants.push(participant);
-    localStorage.setItem("participants", JSON.stringify(participants));
 
-    form.reset();
-    updateList();
+    // Display in the participants list
+    const div = document.createElement("div");
+    div.classList.add("participant-item");
+    div.textContent = `${participant.firstName} ${participant.lastName} (${participant.email})`;
+    participantsList.appendChild(div);
+
+    // Reset form and enable Next button
+    participantForm.reset();
+    nextStepBtn.disabled = false;
 });
 
-// Update participants list
-function updateList() {
-    list.innerHTML = participants
-        .map(
-            (p, i) => `
-    <div class="participant-card">
-      <div>
-        <strong>${p.firstName} ${p.lastName}</strong><br/>
-        <small>${p.email}</small>
-      </div>
-      <button onclick="removeParticipant(${i})">✖</button>
-    </div>`
-        )
-        .join("");
+// Go to Step 4 when "Next" is clicked
+nextStepBtn.addEventListener("click", () => {
+    step3.style.display = "none";
+    step4.style.display = "block";
 
-    nextBtn.disabled = participants.length < totalTickets;
-}
+    // Retrieve booking data from localStorage
+    const title = localStorage.getItem("eventTitle") || "No event";
+    const location = localStorage.getItem("eventLocation") || "Unknown";
+    const date = localStorage.getItem("eventDate") || "N/A";
+    const qty = parseInt(localStorage.getItem("ticketsQty")) || 1;
+    const img = localStorage.getItem("eventImg") || "";
+    const total = (qty * 15).toFixed(2);
 
-// Remove participant
-window.removeParticipant = function(index) {
-    participants.splice(index, 1);
-    localStorage.setItem("participants", JSON.stringify(participants));
-    updateList();
-};
+    // Fill summary section
+    summaryTitle.textContent = title;
+    summaryLocation.textContent = `📍 ${location}`;
+    summaryDate.textContent = `📅 ${date}`;
+    summaryQty.textContent = `🎟️ Tickets: ${qty}`;
+    summaryTotal.textContent = `💰 Total: $${total}`;
+    summaryImg.src = img;
+
+    // Show participants
+    summaryParticipants.innerHTML = "";
+    participants.forEach((p, i) => {
+        const pItem = document.createElement("p");
+        pItem.textContent = `${i + 1}. ${p.firstName} ${p.lastName} — ${p.email} (${p.phone})`;
+        summaryParticipants.appendChild(pItem);
+    });
+});
+
+// Confirm booking
+confirmBookingBtn.addEventListener("click", () => {
+    alert("🎉 Booking confirmed successfully!");
+
+    // Optional: clear saved data
+    localStorage.removeItem("participants");
+    localStorage.removeItem("lastBooking");
+    localStorage.removeItem("ticketsQty");
+
+    // Reset participants array
+    participants = [];
+
+    // Return to home or event list
+    step4.style.display = "none";
+    document.getElementById("events-section").style.display = "block";
+});

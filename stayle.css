@@ -232,3 +232,94 @@ header {
     font-weight: bold;
     width: 100%;
 }
+
+
+/* STEP 3 STYLES */
+
+#step3 {
+    display: none;
+    padding: 2rem;
+    min-height: 100vh;
+    background-color: #111;
+    color: #eee;
+}
+
+#step3.active {
+    display: block;
+}
+
+#step3 header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    color: #4da6ff;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+#participantForm {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    max-width: 400px;
+}
+
+#participantForm input {
+    padding: 0.6rem;
+    border: none;
+    border-radius: 0.4rem;
+    background: #333;
+    color: #fff;
+}
+
+#participantForm button {
+    margin-top: 0.8rem;
+    background: #4da6ff;
+    border: none;
+    color: white;
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+#participantsList {
+    margin-top: 1.5rem;
+}
+
+.participant-card {
+    background: #222;
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+    margin-bottom: 0.6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.participant-card button {
+    background: none;
+    border: none;
+    color: #ff4d4d;
+    cursor: pointer;
+}
+
+#nextStepBtn {
+    margin-top: 1.5rem;
+    background: #4da6ff;
+    border: none;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+#nextStepBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

@@ -148,6 +148,41 @@
         </div>
     </section>
 
+
+    <!-- STEP 3: ADD PARTICIPANTS -->
+    <section id="step3" class="hidden">
+        <header>
+            <button class="back-btn" data-back="step2">← Back</button>
+            <h2>Add Participants</h2>
+        </header>
+
+        <form id="participantForm">
+            <label>First Name</label>
+            <input type="text" id="firstName" required />
+
+            <label>Last Name</label>
+            <input type="text" id="lastName" required />
+
+            <label>Email</label>
+            <input type="email" id="email" required />
+
+            <label>Phone</label>
+            <input type="tel" id="phone" required />
+
+            <button type="submit">Confirm</button>
+        </form>
+
+        <div id="participantsList"></div>
+
+        <button id="nextStepBtn" disabled>Next</button>
+    </section>
+
+
+
+
+
+
+
     <script src="https://kit.fontawesome.com/a2e0e6b3b1.js" crossorigin="anonymous"></script>
 
     <script src="script.js"></script>
